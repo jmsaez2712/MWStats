@@ -14,7 +14,11 @@ class Player (
 
     data class Lifetime(
         var all: All
-    )
+    ){
+        override fun toString(): String {
+            return "Lifetime(all=$all)"
+        }
+    }
 
     data class Properties(
         var adsKills: Int,
@@ -61,12 +65,23 @@ class Player (
         var bestKills: Int,
         var kdRatio: Double,
         var wlRatio: Double,
-    )
+    ){
+        override fun toString(): String {
+            return "Properties(adsKills=$adsKills, ammoBoxUsed=$ammoBoxUsed, arDeaths=$arDeaths, arHeadshots=$arHeadshots, arKills=$arKills, assaults=$assaults, avengerKills=$avengerKills, bombDefused=$bombDefused, bombDetonated=$bombDetonated, bombPlanted=$bombPlanted, c4Kills=$c4Kills, captures=$captures, carpackagesCaptures=$carpackagesCaptures, carrierKills=$carrierKills, classChanges=$classChanges, claymoreKills=$claymoreKills, clutch=$clutch, clutchRevives=$clutchRevives, comebackKills=$comebackKills, deadSilenceKills=$deadSilenceKills, deathsFromBehind=$deathsFromBehind, decoyHits=$decoyHits, destroyedKillstreak=$destroyedKillstreak, executionKills=$executionKills, fragKills=$fragKills, headshots=$headshots, accuracy=$accuracy, assists=$assists, bestAssists=$bestAssists, bestCaptures=$bestCaptures, bestConfirmed=$bestConfirmed, bestDamage=$bestDamage, bestDeaths=$bestDeaths, bestDefends=$bestDefends, bestDefuses=$bestDefuses, bestDenied=$bestDenied, bestDestructions=$bestDestructions, bestFieldgoals=$bestFieldgoals, bestKD=$bestKD, bestKillChains=$bestKillChains, bestKillStreak=$bestKillStreak, bestKills=$bestKills, kdRatio=$kdRatio, wlRatio=$wlRatio)"
+        }
+    }
 
     data class All(
         var properties: Properties
-    )
+    ){
+        override fun toString(): String {
+            return "All(properties=$properties)"
+        }
+    }
 
+    override fun toString(): String {
+        return "Player(title='$title', platform='$platform', username='$username', type='$type', level=$level, maxLevel=$maxLevel, prestige=$prestige, lifetime=$lifetime, engagement='$engagement')"
+    }
 
 
 }
