@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dev.jmsaez.projectapi.databinding.FragmentSecondBinding
@@ -17,6 +18,8 @@ import dev.jmsaez.projectapi.viewmodel.PlayerViewModel
 class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
+    private lateinit var player:String
+    private lateinit var platform: String
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -34,13 +37,26 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val platforms = resources.getStringArray(R.array.platforms)
+        var arrayAdapter = ArrayAdapter<String>(this.requireContext(), R.layout.dropdown_item, platforms)
+        binding.tvDropdownItem.setAdapter(arrayAdapter)
+
+        binding.btSearch.setOnClickListener{
+            player = binding.itSearch.text.toString()
+            platform = binding.searchInputLayout.editText?.text.toString()
+            observePlayer(player, platform)
+        }
+
+
+    }
+
+    private fun observePlayer(player:String, platform:String){
         var pvm = ViewModelProvider(this).get(PlayerViewModel::class.java)
         pvm.getPlayer("Amartin743", "psn")
         var liveData = pvm.getPlayerLiveData()
         liveData?.observe(viewLifecycleOwner) {
             Log.d(":::LIVEDATA", it.toString())
         }
-
     }
 
     override fun onDestroyView() {

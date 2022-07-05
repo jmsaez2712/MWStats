@@ -9,4 +9,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="platforms">
+        <string>PSN</string>
+        <string>Battle.net</string>
+        <string>Xbox</string>
+        <string>Activision ID</string>
+    </string-array>
 </resources>
