@@ -38,12 +38,14 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val platforms = resources.getStringArray(R.array.platforms)
-        var arrayAdapter = ArrayAdapter<String>(this.requireContext(), R.layout.dropdown_item, platforms)
+        var arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.dropdown_item, platforms)
         binding.tvDropdownItem.setAdapter(arrayAdapter)
 
         binding.btSearch.setOnClickListener{
             player = binding.itSearch.text.toString()
-            platform = binding.searchInputLayout.editText?.text.toString()
+            platform = binding.dropdownPlatform.editText?.text.toString()
+            Log.d(":::player", player)
+            Log.d(":::platform", platform)
             observePlayer(player, platform)
         }
 
@@ -52,12 +54,14 @@ class SecondFragment : Fragment() {
 
     private fun observePlayer(player:String, platform:String){
         var pvm = ViewModelProvider(this).get(PlayerViewModel::class.java)
-        pvm.getPlayer("Amartin743", "psn")
+        pvm.getPlayer(player, platform)
         var liveData = pvm.getPlayerLiveData()
         liveData?.observe(viewLifecycleOwner) {
             Log.d(":::LIVEDATA", it.toString())
         }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

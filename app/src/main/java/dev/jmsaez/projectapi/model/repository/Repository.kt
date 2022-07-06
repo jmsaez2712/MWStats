@@ -30,7 +30,8 @@ class Repository(context: Context) {
 
     fun getPlayer(player:String, platform:String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = restClient.getFullPlayer(player, platform)
+            var urlPlatform = returnPlatform(platform)
+            val call = restClient.getFullPlayer(player, urlPlatform)
             val player = call.body()
             if(call.isSuccessful){
                 playerLiveData.postValue(player)
@@ -40,5 +41,15 @@ class Repository(context: Context) {
 
     fun returnPlayerLiveData():MutableLiveData<Player>{
         return playerLiveData
+    }
+
+    private fun returnPlatform(platform:String):String{
+        when(platform){
+            "PSN" -> return "psn"
+            "Xbox" -> return "xbl"
+            "Battle.net"-> return "battle"
+            "Activision ID"-> return "acti"
+        }
+        return ""
     }
 }
