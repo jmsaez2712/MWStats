@@ -15,6 +15,6 @@ interface RestClient {
         "X-RapidAPI-Key: 631591178fmsh9a53bae88452547p1aa000jsnfbb142235217"
     )
     @GET("multiplayer/{gamertag}/{platform}")
-    suspend fun getFullPlayer(@Path("gamertag")platform:String, @Path("platform")playerName:String): Response<Player>
+    suspend fun getFullPlayer(@Path("gamertag")player:String, @Path("platform")platform:String): Response<Player>
 
 }

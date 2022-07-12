@@ -44,8 +44,6 @@ class SecondFragment : Fragment() {
         binding.btSearch.setOnClickListener{
             player = binding.itSearch.text.toString()
             platform = binding.dropdownPlatform.editText?.text.toString()
-            Log.d(":::player", player)
-            Log.d(":::platform", platform)
             observePlayer(player, platform)
         }
 
@@ -56,8 +54,27 @@ class SecondFragment : Fragment() {
         var pvm = ViewModelProvider(this).get(PlayerViewModel::class.java)
         pvm.getPlayer(player, platform)
         var liveData = pvm.getPlayerLiveData()
-        liveData?.observe(viewLifecycleOwner) {
+        liveData?.observe(this.viewLifecycleOwner) {
             Log.d(":::LIVEDATA", it.toString())
+//            binding.nestedPlayer.visibility = View.VISIBLE
+//            binding.dropdownPlatform.visibility = View.GONE
+//            binding.searchInputLayout.visibility = View.GONE
+//            binding.tvPlayerName.text = it.username
+//            binding.tvPlayerLevel.text = it.level.toString()
+//            binding.tvAccuracy.text = it.lifetime.all.properties.accuracy.toString()
+//            binding.tvHours.text = (it.lifetime.all.properties.timePlayedTotal / 3600 ).toString()
+//            binding.tvWl.text = it.lifetime.all.properties.winLossRatio.toString()
+//            binding.tvKd.text = it.lifetime.all.properties.kdRatio.toString()
+//            binding.tvBestkd.text = it.lifetime.all.properties.bestKD.toString()
+//            binding.tvKillstreak.text = it.lifetime.all.properties.bestKillStreak.toString()
+//            binding.tvMatchMoreKills.text = it.lifetime.all.properties.bestKills.toString()
+//            binding.tvAccuracy.text = it.lifetime.all.properties.accuracy.toString()
+//            binding.tvHeadshot.text = (it.lifetime.all.properties.hits / it.lifetime.all.properties.headshots).toString()
+//            binding.tvSpM.text = it.lifetime.all.properties.scorePerMinute.toString()
+//            binding.tvSpG.text = it.lifetime.all.properties.scorePerGame.toString()
+
+
+
         }
     }
 

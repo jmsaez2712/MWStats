@@ -36,6 +36,7 @@ class Player (
         var kills:Int,
         var losses:Int,
         var scorePerMinute: Double,
+        var scorePerGame: Double,
         var timePlayedTotal: Int,
         var winLossRatio: Double,
         var ties:Int,

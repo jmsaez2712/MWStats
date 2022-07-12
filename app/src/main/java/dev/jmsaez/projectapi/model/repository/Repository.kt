@@ -1,6 +1,7 @@
 package dev.jmsaez.projectapi.model.repository
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import dev.jmsaez.projectapi.model.api.RestClient
 import dev.jmsaez.projectapi.model.entity.Player
@@ -31,10 +32,12 @@ class Repository(context: Context) {
     fun getPlayer(player:String, platform:String){
         CoroutineScope(Dispatchers.IO).launch {
             var urlPlatform = returnPlatform(platform)
-            val call = restClient.getFullPlayer(player, urlPlatform)
+            val call = restClient.getFullPlayer(player, platform)
             val player = call.body()
             if(call.isSuccessful){
                 playerLiveData.postValue(player)
+            } else {
+                Log.d("::ERRORAPI", call.message())
             }
         }
     }
