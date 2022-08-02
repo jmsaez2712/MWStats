@@ -32,7 +32,7 @@ class Repository(context: Context) {
     fun getPlayer(player:String, platform:String){
         CoroutineScope(Dispatchers.IO).launch {
             var urlPlatform = returnPlatform(platform)
-            val call = restClient.getFullPlayer(player, platform)
+            val call = restClient.getFullPlayer(player, urlPlatform)
             val player = call.body()
             if(call.isSuccessful){
                 playerLiveData.postValue(player)
