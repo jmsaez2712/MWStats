@@ -48,36 +48,6 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
 
-//        var okHttpClient = OkHttpClient
-//
-//        var request = Request.Builder()
-//            .url("https://call-of-duty-modern-warfare.p.rapidapi.com/battle/Amartin743")
-//            .build()
-//
-//        try (var response = okHttpClient){
-//
-//        }
-
-
-
-//        var retrofit = Retrofit.Builder()
-//            .baseUrl("https://call-of-duty-modern-warfare.p.rapidapi.com/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-
-
-
-//        var client = retrofit.create(RestClient::class.java)
-//        var player: Call<Player> = client.getFullPlayer("Amartin743", "psn")
-//        player.enqueue(object: Callback<Player>{
-//            override fun onResponse(call: Call<Player>, response: Response<Player>) {
-//                Log.v(":::XXX", response.body().toString())
-//            }
-//
-//            override fun onFailure(call: Call<Player>, t: Throwable) {
-//                Log.v(":::XXX", t.toString())
-//            }
-//        })
 
         }
 
