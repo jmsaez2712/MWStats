@@ -44,23 +44,15 @@ class SecondFragment : Fragment() {
         binding.btSearch.setOnClickListener{
             player = binding.itSearch.text.toString()
             platform = binding.dropdownPlatform.editText?.text.toString()
-            observePlayer(player, platform)
-        }
-
-
-    }
-
-    private fun observePlayer(player:String, platform:String){
-        var pvm = ViewModelProvider(this).get(PlayerViewModel::class.java)
-        pvm.getPlayer(player, platform)
-        var liveData = pvm.getPlayerLiveData()
-        liveData?.observe(this.viewLifecycleOwner) {
-            Log.d(":::LIVEDATA", it.toString())
-            var bundle = Bundle();
-            bundle.putParcelable("player", it)
+            var bundle = Bundle()
+            bundle.putString("platform", platform)
+            bundle.putString("player", player)
+            Log.d(":::PLATFORM", platform)
             findNavController().navigate(R.id.action_SecondFragment_to_blankFragment, bundle)
         }
     }
+
+
 
 
 
