@@ -42,17 +42,30 @@ class BlankFragment : Fragment() {
         player = bundle!!.getString("player")!!
         platform = bundle!!.getString("platform")!!
         Log.d("::>", player!!.toString())
-        try {
-            //putOnScreen(player)
-            observePlayer(player, platform)
-        } catch (e:Exception){
-            //Not found player screen or drawable
-            binding.ivPlayer.setImageResource(R.drawable.ic_launcher_background)
-        }
-
+        observePlayer(player, platform)
     }
     private fun putOnScreen(player:Player){
-        try {
+        hideLoader()
+        showData(player)
+    }
+
+    private fun hideLoader(){
+        binding.progressBar.visibility = View.GONE
+    }
+
+    private fun hideCards(){
+        binding.scrollView2.visibility = View.INVISIBLE
+    }
+    private fun showCards(){
+        binding.scrollView2.visibility = View.VISIBLE
+    }
+
+    private fun showError(){
+        binding.notFoundCard.visibility = View.VISIBLE
+    }
+
+    private fun showData(player: Player){
+        try{
             binding.tvPlayerName.append(": " + player.username)
             binding.tvPlayerLevel.append(": " + player.level.toString())
             binding.tvHours.append(": " + player.lifetime.all.properties.timePlayedTotal)
@@ -67,11 +80,12 @@ class BlankFragment : Fragment() {
             binding.tvWins.append(": " + player.lifetime.all.properties.wins)
             binding.tvTies.append(": " + player.lifetime.all.properties.ties)
             binding.tvLosses.append(": " + player.lifetime.all.properties.losses)
-        } catch(ex: Exception){
-            binding.ivPlayer.setImageResource(R.drawable.ic_launcher_background)
+            showData(player)
+        } catch (e:Exception) {
+            showError()
+            hideCards()
         }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -82,10 +96,6 @@ class BlankFragment : Fragment() {
         pvm.getPlayer(player, platform)
         var liveData = pvm.getPlayerLiveData()
         liveData?.observe(this.viewLifecycleOwner) {
-            //Log.d(":::LIVEDATA", it.toString())
-            //var bundle = Bundle();
-            //bundle.putParcelable("player", it)
-            //findNavController().navigate(R.id.action_SecondFragment_to_blankFragment, bundle)
             putOnScreen(it)
         }
     }

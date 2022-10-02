@@ -40,7 +40,7 @@ class SecondFragment : Fragment() {
         val platforms = resources.getStringArray(R.array.platforms)
         var arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.dropdown_item, platforms)
         binding.tvDropdownItem.setAdapter(arrayAdapter)
-
+        resetInputs()
         binding.btSearch.setOnClickListener{
             player = binding.itSearch.text.toString()
             platform = binding.dropdownPlatform.editText?.text.toString()
@@ -53,7 +53,10 @@ class SecondFragment : Fragment() {
     }
 
 
-
+    private fun resetInputs(){
+        binding.itSearch.setText("")
+        binding.dropdownPlatform.editText?.setText("")
+    }
 
 
     override fun onDestroyView() {
