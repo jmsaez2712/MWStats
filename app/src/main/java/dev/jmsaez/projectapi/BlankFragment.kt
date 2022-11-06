@@ -80,7 +80,7 @@ class BlankFragment : Fragment() {
             binding.tvWins.append(": " + player.lifetime.all.properties.wins)
             binding.tvTies.append(": " + player.lifetime.all.properties.ties)
             binding.tvLosses.append(": " + player.lifetime.all.properties.losses)
-            showData(player)
+            showCards()
         } catch (e:Exception) {
             showError()
             hideCards()
