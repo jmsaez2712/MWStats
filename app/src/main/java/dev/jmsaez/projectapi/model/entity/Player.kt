@@ -47,7 +47,8 @@ class Player(
         var winLossRatio: Double,
         var ties:Int,
         var wins:Int,
-        var totalShots: Int
+        var totalShots: Int,
+        var recordKillsInAMatch : Int
     ):Parcelable {
         override fun toString(): String {
             return "Properties(accuracy=$accuracy, assists=$assists, bestKD=$bestKD, bestKillChain=$bestKillChain, bestKillStreak=$bestKillStreak, bestKills=$bestKills, bestScore=$bestScore, deaths=$deaths, gamesPlayed=$gamesPlayed, headshots=$headshots, hits=$hits, kdRatio=$kdRatio, kills=$kills, losses=$losses, scorePerMinute=$scorePerMinute, timePlayedTotal=$timePlayedTotal, winLossRatio=$winLossRatio, ties=$ties, wins=$wins, totalShots=$totalShots)"

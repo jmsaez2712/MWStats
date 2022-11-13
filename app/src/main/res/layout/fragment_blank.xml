@@ -43,17 +43,24 @@
                         android:id="@+id/tv_player_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="16dp"
                         android:text="Player"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_player_level" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_player_level"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="12dp"
                         android:text="Player level"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        tools:layout_editor_absoluteY="70dp" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_player_name" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -107,7 +114,7 @@
                         android:id="@+id/tv_SpG"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="41dp"
+                        android:layout_marginStart="44dp"
                         android:text="Score per game"
                         app:layout_constraintBottom_toTopOf="@+id/tv_accuracy"
                         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +134,7 @@
                         android:id="@+id/tv_losses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="41dp"
+                        android:layout_marginStart="44dp"
                         android:text="Losses"
                         app:layout_constraintBottom_toTopOf="@+id/tv_headshot"
                         app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +144,7 @@
                         android:id="@+id/tv_headshot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="41dp"
+                        android:layout_marginStart="44dp"
                         android:text="Headshot"
                         app:layout_constraintBottom_toTopOf="@+id/tv_killstreak"
                         app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +164,7 @@
                         android:id="@+id/tv_SpM"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="41dp"
+                        android:layout_marginStart="44dp"
                         android:text="Score per minute"
                         app:layout_constraintBottom_toTopOf="@+id/tv_total_games"
                         app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +185,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="44dp"
-                        android:text="TextView"
+                        android:text="Wins/Loss Ratio"
                         app:layout_constraintBottom_toTopOf="@+id/tv_wins"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_games" />
@@ -187,7 +194,7 @@
                         android:id="@+id/tv_ties"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="41dp"
+                        android:layout_marginStart="44dp"
                         android:text="Ties"
                         app:layout_constraintBottom_toTopOf="@+id/tv_hours"
                         app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +204,7 @@
                         android:id="@+id/tv_wins"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="41dp"
+                        android:layout_marginStart="44dp"
                         android:text="Wins"
                         app:layout_constraintBottom_toTopOf="@+id/tv_kd"
                         app:layout_constraintStart_toStartOf="parent"
@@ -220,7 +227,7 @@
                         android:layout_marginStart="159dp"
                         android:layout_marginEnd="158dp"
                         android:layout_marginBottom="32dp"
-                        android:text="Button"
+                        android:text="Go back"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
