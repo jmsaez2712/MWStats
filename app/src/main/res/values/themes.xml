@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="materialButtonStyle">@style/buttons</item>
     </style>
 
     <style name="Theme.ProjectAPI.NoActionBar">
@@ -22,4 +23,10 @@
     <style name="Theme.ProjectAPI.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ProjectAPI.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="buttons" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">30dp</item>
+        <item name="backgroundColor">@color/primaryColor</item>
+    </style>
+
 </resources>
