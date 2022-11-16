@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import dev.jmsaez.projectapi.databinding.FragmentFirstBinding
 import dev.jmsaez.projectapi.model.api.RestClient
 import dev.jmsaez.projectapi.model.entity.Player
@@ -26,6 +30,8 @@ import java.lang.Exception
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+    private lateinit var adapter: ViewPagerAdapter
+    private lateinit var viewPager: ViewPager2
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -44,10 +50,14 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cardPlayer.setOnClickListener{
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        var viewPager = binding.viewPager
+        var tabLayout = binding.tabLayout
 
+        adapter = ViewPagerAdapter(this)
+        viewPager.adapter = adapter
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = "OBJECT ${(position + 1)}"
+        }.attach()
 
         }
 
@@ -58,4 +68,19 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    class ViewPagerAdapter(activity: Fragment) : FragmentStateAdapter(activity!!){
+        override fun getItemCount(): Int = 2
+
+        override fun createFragment(position: Int): Fragment{
+            when(position){
+                0 -> return SecondFragment()
+                1 -> return LeaderboardFragment()
+            }
+
+            return SecondFragment()
+        }
+
+
+    }
+
 }

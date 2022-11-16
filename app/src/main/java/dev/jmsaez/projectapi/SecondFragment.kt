@@ -48,7 +48,7 @@ class SecondFragment : Fragment() {
             bundle.putString("platform", platform)
             bundle.putString("player", player)
             Log.d(":::PLATFORM", platform)
-            findNavController().navigate(R.id.action_SecondFragment_to_blankFragment, bundle)
+            findNavController().navigate(R.id.action_FirstFragment_to_blankFragment, bundle)
         }
     }
 
