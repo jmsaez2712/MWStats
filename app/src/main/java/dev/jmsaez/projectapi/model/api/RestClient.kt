@@ -1,5 +1,6 @@
 package dev.jmsaez.projectapi.model.api
 
+import dev.jmsaez.projectapi.model.entity.Leaderboard
 import dev.jmsaez.projectapi.model.entity.Player
 import retrofit2.Call
 import retrofit2.Response
@@ -16,5 +17,10 @@ interface RestClient {
     )
     @GET("multiplayer/{gamertag}/{platform}")
     suspend fun getFullPlayer(@Path("gamertag")player:String, @Path("platform")platform:String): Response<Player>
+
+    @GET("leaderboard/1/{platform}")
+    suspend fun getLeaderboard(@Path("platform")platform: String): Response<Leaderboard>
+
+
 
 }

@@ -24,9 +24,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
@@ -56,12 +54,13 @@ class FirstFragment : Fragment() {
         adapter = ViewPagerAdapter(this)
         viewPager.adapter = adapter
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = "OBJECT ${(position + 1)}"
+            when(position){
+                0 -> tab.text = "Search"
+                1 -> tab.text = "Leaderboard"
+            }
         }.attach()
 
-        }
-
-
+    }
 
 
     override fun onDestroyView() {
