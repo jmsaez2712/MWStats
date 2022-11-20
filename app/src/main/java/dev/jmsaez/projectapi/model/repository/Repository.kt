@@ -24,7 +24,7 @@ import retrofit2.create
 class Repository(context: Context) {
     var restClient: RestClient
     var playerLiveData: MutableLiveData<Player>
-    var leaderboardLiveData: MutableLiveData<JSONObject>
+    var leaderboardLiveData: MutableLiveData<Leaderboard>
     init {
         restClient = this.returnRestClient()
         playerLiveData = MutableLiveData()
@@ -55,23 +55,18 @@ class Repository(context: Context) {
 
     fun getLeaderboard(platform:String){
         CoroutineScope(Dispatchers.IO).launch {
-            val client = OkHttpClient()
-
-            val request = Request.Builder()
-                .url("https://call-of-duty-modern-warfare.p.rapidapi.com/leaderboard/1/battle")
-                .get()
-                .addHeader("X-RapidAPI-Key", "cdf0d6bb69msh18763eb3905b3f2p1ccc14jsnd7c9b9675c57")
-                .addHeader("X-RapidAPI-Host", "call-of-duty-modern-warfare.p.rapidapi.com")
-                .build()
-
-            val response = client.newCall(request).execute()
-            var json = JsonParser().parse(response.body()!!.string()).asJsonObject
-            leaderboardLiveData.postValue(json)
-            Log.d("::LEADER", response.body()!!.string())
+            var urlPlatform = returnPlatform(platform)
+            val call = restClient.getLeaderboard(platform)
+            val leaderboard = call.body()
+            if(call.isSuccessful){
+                leaderboardLiveData.postValue(leaderboard)
+            } else {
+                Log.d("::ERRORAPI", call.errorBody()!!.string())
+            }
         }
     }
 
-    fun returnLeaderboardLiveData():MutableLiveData<JSONObject>{
+    fun returnLeaderboardLiveData():MutableLiveData<Leaderboard>{
         return leaderboardLiveData
     }
 

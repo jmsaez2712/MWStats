@@ -6,19 +6,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import dev.jmsaez.projectapi.model.entity.Leaderboard
+import dev.jmsaez.projectapi.view.leaderboard_adapter.LeaderboardAdapter
 import dev.jmsaez.projectapi.viewmodel.LeaderboardViewModel
 import dev.jmsaez.projectapi.viewmodel.PlayerViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+lateinit var leaderboard:MutableLiveData<Leaderboard>;
 
 
 class LeaderboardFragment : Fragment() {
 
-
+    lateinit var lvm: LeaderboardViewModel
+    lateinit var rvLeaderboard: RecyclerView
+    lateinit var leaderboardAdapter: LeaderboardAdapter
+    lateinit var progressBar: ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,11 +41,24 @@ class LeaderboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var pvm = ViewModelProvider(this).get(LeaderboardViewModel::class.java)
-        pvm.getLeaderboard("PSN")
-        var liveData = pvm.getLeaderborardLiveData()
+        rvLeaderboard = view.findViewById(R.id.rvLeaderboard)
+        rvLeaderboard.layoutManager = LinearLayoutManager(view.context)
+        lvm = ViewModelProvider(requireActivity()).get(LeaderboardViewModel::class.java)
+
+        progressBar = view.findViewById(R.id.progressBar2)
+
+        leaderboardAdapter = LeaderboardAdapter(view.context, rvLeaderboard)
+        rvLeaderboard.adapter = leaderboardAdapter
+
+
+        lvm.getLeaderboard("battle")
+        var liveData = lvm.getLeaderborardLiveData()
         liveData?.observe(this.viewLifecycleOwner) {
             Log.d("::::LEADERTEST", it!!.toString())
+            leaderboardAdapter.setEntriesList(it.entries)
+            progressBar.visibility = View.GONE
+            rvLeaderboard.visibility = View.VISIBLE
+
         }
     }
 }

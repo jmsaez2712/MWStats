@@ -3,6 +3,7 @@ package dev.jmsaez.projectapi.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.JsonObject
 import dev.jmsaez.projectapi.model.entity.Leaderboard
 import dev.jmsaez.projectapi.model.repository.Repository
 import okhttp3.ResponseBody
@@ -21,7 +22,7 @@ class LeaderboardViewModel(application:Application):AndroidViewModel(application
         repository.getLeaderboard(platform)
     }
 
-    fun getLeaderborardLiveData():MutableLiveData<JSONObject>{
+    fun getLeaderborardLiveData():MutableLiveData<Leaderboard>{
         return repository.returnLeaderboardLiveData()
     }
 }

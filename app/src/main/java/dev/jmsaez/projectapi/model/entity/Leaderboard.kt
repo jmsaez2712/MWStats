@@ -4,33 +4,26 @@ import android.os.Parcelable
 
 
 class Leaderboard (
-    var entries: Entries
+    var entries: List<Entries>
         ) {
 
 
     data class Entries(
-        var players: ArrayList<LeaderboardPlayer>
+        var rank: Int,
+        var username: String,
+        var values: Values
     ){
         override fun toString(): String {
-            return "Entries(players=$players)"
+            return "Entries(username='$username', rank=$rank, values=$values)"
         }
     }
-
-    data class LeaderboardPlayer(
-        var username: String,
-        var rank: Int,
-        var values: Values
-    )
-    {
-        override fun toString(): String {
-            return "LeaderboardPlayer(username='$username', rank=$rank, values=$values)"
-        }
-    }
-
     data class Values(
-        var kdRatio: Double,
         var wins: Int,
-        var level: Int
+        var kdRatio: Double,
+        var level: Int,
+        var accuracy: Double,
+        var gamesPlayed: Int,
+        var timePlayed: Int
     ){
         override fun toString(): String {
             return "Values(kdRatio=$kdRatio, wins=$wins, level=$level)"

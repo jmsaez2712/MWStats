@@ -13,11 +13,15 @@ interface RestClient {
 
     @Headers(
         "X-RapidAPI-Host: call-of-duty-modern-warfare.p.rapidapi.com",
-        "X-RapidAPI-Key: 631591178fmsh9a53bae88452547p1aa000jsnfbb142235217"
+        "X-RapidAPI-Key: cdf0d6bb69msh18763eb3905b3f2p1ccc14jsnd7c9b9675c57"
     )
     @GET("multiplayer/{gamertag}/{platform}")
     suspend fun getFullPlayer(@Path("gamertag")player:String, @Path("platform")platform:String): Response<Player>
 
+    @Headers(
+        "X-RapidAPI-Host: call-of-duty-modern-warfare.p.rapidapi.com",
+        "X-RapidAPI-Key: cdf0d6bb69msh18763eb3905b3f2p1ccc14jsnd7c9b9675c57"
+    )
     @GET("leaderboard/1/{platform}")
     suspend fun getLeaderboard(@Path("platform")platform: String): Response<Leaderboard>
 
