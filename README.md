@@ -1,6 +1,6 @@
 # MW Stats
 
-  Project desing to learn and perfectionaise Restfull calls and Kotlin programming using Modern Warfare API.  
+  Project desing to learn and perfectionaise Restfull calls and Kotlin programming using COD:Modern Warfare API.  
   
   <img src="https://img.stackshare.io/service/2856/retrofit-logo.png" width="100px" height="100px"> <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png" height="100px">  
   In this projects has been used:   
