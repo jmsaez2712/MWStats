@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="dev.jmsaez.projectapi.FirstFragment"
-        android:label="@string/first_fragment_label"
+        android:label="MW Stats"
         tools:layout="@layout/fragment_first">
         <action
             android:id="@+id/action_FirstFragment_to_blankFragment"
@@ -26,6 +26,10 @@
     <fragment
         android:id="@+id/blankFragment"
         android:name="dev.jmsaez.projectapi.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        android:label="MW Stats"
+        tools:layout="@layout/fragment_blank">
+        <action
+            android:id="@+id/action_blankFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>

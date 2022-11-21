@@ -6,15 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
 import android.widget.ProgressBar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputLayout
 import dev.jmsaez.projectapi.model.entity.Leaderboard
 import dev.jmsaez.projectapi.view.leaderboard_adapter.LeaderboardAdapter
 import dev.jmsaez.projectapi.viewmodel.LeaderboardViewModel
 import dev.jmsaez.projectapi.viewmodel.PlayerViewModel
+import okhttp3.internal.platform.Platform
 
 lateinit var leaderboard:MutableLiveData<Leaderboard>;
 
@@ -25,6 +29,9 @@ class LeaderboardFragment : Fragment() {
     lateinit var rvLeaderboard: RecyclerView
     lateinit var leaderboardAdapter: LeaderboardAdapter
     lateinit var progressBar: ProgressBar
+    lateinit var liveData: MutableLiveData<Leaderboard>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,9 +57,12 @@ class LeaderboardFragment : Fragment() {
         leaderboardAdapter = LeaderboardAdapter(view.context, rvLeaderboard)
         rvLeaderboard.adapter = leaderboardAdapter
 
+        loadLeaderboard()
+    }
 
-        lvm.getLeaderboard("battle")
-        var liveData = lvm.getLeaderborardLiveData()
+    fun loadLeaderboard(){
+        lvm.getLeaderboard()
+        liveData = lvm.getLeaderborardLiveData()
         liveData?.observe(this.viewLifecycleOwner) {
             Log.d("::::LEADERTEST", it!!.toString())
             leaderboardAdapter.setEntriesList(it.entries)

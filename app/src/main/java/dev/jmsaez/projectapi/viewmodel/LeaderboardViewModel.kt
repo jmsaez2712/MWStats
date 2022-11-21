@@ -18,8 +18,8 @@ class LeaderboardViewModel(application:Application):AndroidViewModel(application
         repository = Repository(application)
     }
 
-    fun getLeaderboard(platform: String){
-        repository.getLeaderboard(platform)
+    fun getLeaderboard(){
+        repository.getLeaderboard()
     }
 
     fun getLeaderborardLiveData():MutableLiveData<Leaderboard>{

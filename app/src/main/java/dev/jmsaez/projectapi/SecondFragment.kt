@@ -1,11 +1,14 @@
 package dev.jmsaez.projectapi
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -40,6 +43,7 @@ class SecondFragment : Fragment() {
         val platforms = resources.getStringArray(R.array.platforms)
         var arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.dropdown_item, platforms)
         binding.tvDropdownItem.setAdapter(arrayAdapter)
+
         resetInputs()
         binding.btSearch.setOnClickListener{
             player = binding.itSearch.text.toString()
@@ -62,5 +66,10 @@ class SecondFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        resetInputs()
     }
 }

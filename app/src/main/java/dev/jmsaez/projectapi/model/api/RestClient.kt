@@ -22,8 +22,8 @@ interface RestClient {
         "X-RapidAPI-Host: call-of-duty-modern-warfare.p.rapidapi.com",
         "X-RapidAPI-Key: cdf0d6bb69msh18763eb3905b3f2p1ccc14jsnd7c9b9675c57"
     )
-    @GET("leaderboard/1/{platform}")
-    suspend fun getLeaderboard(@Path("platform")platform: String): Response<Leaderboard>
+    @GET("leaderboard/1/battle")
+    suspend fun getLeaderboard(): Response<Leaderboard>
 
 
 

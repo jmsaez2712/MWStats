@@ -34,14 +34,14 @@ class LeaderboardAdapter(context: Context, recycler: RecyclerView) : Adapter<Lea
         holder.level.text = "Level: " + entry?.values?.level.toString()
         holder.rank.text = "#"+entry?.rank.toString()
         holder.user.text = entry?.username!!.split("#")[0]
-        holder.originalUser.text = "Original username: " + entry.username
+        holder.originalUser.text = "Username: " + entry.username
 
         //Values data
         holder.wins.text = "Wins: " + entry.values.wins.toString()
-        holder.kd.text = "KD: " + entry.values.kdRatio.toString()
-        holder.accuracy.text = "Accuracy: " + entry.values.accuracy.toString()
+        holder.kd.text = "KD: " + String.format("%.2f",entry.values.kdRatio)
+        holder.accuracy.text = "Accuracy: " + String.format("%.2f",entry.values.accuracy)
         holder.gamesPlayed.text = "Games played: " + entry.values.gamesPlayed.toString()
-        holder.hours.text = "Time played: " + entry.values.timePlayed
+        holder.hours.text = "Time played: " + entry.values.timePlayed + " h"
 
     }
 

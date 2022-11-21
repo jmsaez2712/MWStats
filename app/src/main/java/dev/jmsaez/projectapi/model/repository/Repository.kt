@@ -53,10 +53,9 @@ class Repository(context: Context) {
         }
     }
 
-    fun getLeaderboard(platform:String){
+    fun getLeaderboard(){
         CoroutineScope(Dispatchers.IO).launch {
-            var urlPlatform = returnPlatform(platform)
-            val call = restClient.getLeaderboard(platform)
+            val call = restClient.getLeaderboard()
             val leaderboard = call.body()
             if(call.isSuccessful){
                 leaderboardLiveData.postValue(leaderboard)

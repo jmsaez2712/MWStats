@@ -26,21 +26,23 @@ class LeaderboardViewholder(itemView: View, recycler:RecyclerView) : RecyclerVie
     var expand: ImageButton = itemView.findViewById(R.id.btExpand)
     var rv:RecyclerView = recycler
     var expandLy = itemView.findViewById<View>(R.id.layoutExpand)
+    var btExpand: ImageButton = itemView.findViewById(R.id.btExpand)
 
     init {
         expand.setOnClickListener {
 
             if (!expandLy.isVisible)
             {
+                btExpand.animate().rotation(180f).start()
+
                 TransitionManager.beginDelayedTransition(rv, AutoTransition())
                 expandLy.visibility = View.VISIBLE
-                expand.setImageResource(R.drawable.ic_baseline_expand_less_24)
             }
             else
             {
+                btExpand.animate().rotation(0f).start()
                 TransitionManager.beginDelayedTransition(rv, AutoTransition())
                 expandLy.visibility = View.GONE
-                expand.setImageResource(R.drawable.ic_baseline_expand_more_24)
             }
         }
     }

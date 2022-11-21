@@ -25,24 +25,24 @@
 
             <TextView
                 android:id="@+id/tvPosition"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="48dp"
                 android:text="TextView"
+                android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tvPlayerName"
-                app:layout_constraintEnd_toStartOf="@+id/tvPlayerName"
-                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/tvPlayerName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="104dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
                 android:text="TextView"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/btExpand"
                 app:layout_constraintStart_toEndOf="@+id/tvPosition"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="32dp"
-                android:text="Original name"
+                android:text="Username"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPlayerName" />
 

@@ -43,6 +43,10 @@ class BlankFragment : Fragment() {
         platform = bundle!!.getString("platform")!!
         Log.d("::>", player!!.toString())
         observePlayer(player, platform)
+
+        binding.btBack.setOnClickListener{
+            findNavController().navigate(R.id.action_blankFragment_to_FirstFragment)
+        }
     }
     private fun putOnScreen(player:Player){
         hideLoader()
